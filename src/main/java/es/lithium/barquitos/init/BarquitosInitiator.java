@@ -9,7 +9,7 @@ import es.lithium.barquitos.stadistics.StatisticsPrinter;
 
 public class BarquitosInitiator {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
 
         // Initialize game context
         GameContextFactory gameContextFactory = new GameContextFactory();

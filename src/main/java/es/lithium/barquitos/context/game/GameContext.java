@@ -1,36 +1,33 @@
 package es.lithium.barquitos.context.game;
 
 import es.lithium.barquitos.constant.Difficulty;
+import lombok.Getter;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
+@Getter
 public class GameContext {
 
-    private Difficulty difficulty;
-    private LocalDateTime initTimestamp;
+    private final Difficulty difficulty;
+    private final LocalDateTime initTimestamp;
     private int punctuation;
 
-    public Difficulty getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(Difficulty difficulty) {
+    public GameContext(Difficulty difficulty) {
         this.difficulty = difficulty;
+        this.initTimestamp = LocalDateTime.now();
+        this.punctuation = 0;
     }
 
-    public LocalDateTime getInitTimestamp() {
-        return initTimestamp;
+    /**
+     * @return game duration in format "Hh MMm SSs"
+     */
+    public String gameDuration() {
+
+        return Duration.between(initTimestamp, LocalDateTime.now()).toString()
+                .substring(2)
+                .replaceAll("(\\d[HMS])(?!$)", "$1 ")
+                .toLowerCase();
     }
 
-    public void setInitTimestamp(LocalDateTime initTimestamp) {
-        this.initTimestamp = initTimestamp;
-    }
-
-    public int getPunctuation() {
-        return punctuation;
-    }
-
-    public void setPunctuation(int punctuation) {
-        this.punctuation = punctuation;
-    }
 }

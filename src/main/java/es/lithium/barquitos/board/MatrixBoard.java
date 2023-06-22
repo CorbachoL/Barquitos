@@ -15,10 +15,21 @@ public class MatrixBoard implements BoardInterface {
     private int rowsNumber;
     private int colsNumber;
 
+    /**
+     *
+     * Default value for row number: 10
+     * Default value for col number: 10
+     */
     public MatrixBoard() {
         this(DEFAULT_ROW_NUMBER, DEFAULT_COL_NUMBER);
     }
 
+    /**
+     *
+     * @param rowsNumber int value of the number of rows in the board
+     * @param columnsNumber int value of the number of columns in the board
+     * @throws IndexOutOfBoundsException if row number or column number are lower or equals to 0
+     */
     public MatrixBoard(int rowsNumber, int columnsNumber) {
 
         if(rowsNumber <= 0)
